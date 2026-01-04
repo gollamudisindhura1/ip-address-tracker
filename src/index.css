@@ -1,0 +1,49 @@
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+}
+
+.title {
+  text-align: center;
+  padding: 1.5rem;
+  color: white;
+  background: url("/images/pattern-bg-desktop.png") no-repeat center/cover;
+}
+
+.search {
+  display: flex;
+  justify-content: center;
+  margin: 1rem;
+}
+
+.search input {
+  padding: 0.8rem;
+  width: 300px;
+}
+
+.search button {
+  padding: 0.8rem;
+}
+
+.info {
+  background: white;
+  margin: 1rem auto;
+  padding: 1.5rem;
+  max-width: 900px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+}
+
+.map {
+  height: 400px;
+}
+
+.error {
+  color: red;
+  text-align: center;
+}
+
+.loading {
+  text-align: center;
+}
