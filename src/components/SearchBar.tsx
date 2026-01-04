@@ -5,6 +5,8 @@ interface Props {
     onSearch: (value: string) => void
 }
 
+
+
 export default function SearchBar({ onSearch}: Props) {
     const [value, setValue] = useState ("")
 
@@ -15,6 +17,7 @@ export default function SearchBar({ onSearch}: Props) {
         setValue("")
     }
 
+
     return(
         <form className="search-bar" onSubmit={handleSubmit}>
             <input 
@@ -24,7 +27,8 @@ export default function SearchBar({ onSearch}: Props) {
                 onChange={(e) => setValue(e.target.value)} />
                         
         <button type="submit">›</button>
-                
+        
+           
         </form>
     )
 }
