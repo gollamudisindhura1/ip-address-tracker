@@ -6,6 +6,7 @@ const API_KEY = "at_9RLl4ljxD1Tgx8aIJe7IH0PB6tti7";
 
 const API_URL = "https://geo.ipify.org/api/v2/country,city";
 
+
 export function useIPTracker() {
     const [data, setData] = useState<IPData | null>(null)
     const [loading, setLoading] = useState(true)
@@ -33,10 +34,12 @@ export function useIPTracker() {
         }
     }
 
+
     useEffect(()=>{
         fetchIPData()  // load user IP on first render
 
     }, [])
+
 
     return {data, loading, error, fetchIPData}
 }
