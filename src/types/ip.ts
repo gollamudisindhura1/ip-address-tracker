@@ -6,6 +6,7 @@ export interface Location {
   lng: number;
 }
 
+
 export interface IPData {
   ip: string;
   isp: string;
