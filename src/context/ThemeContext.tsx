@@ -7,7 +7,7 @@ interface ThemeContextType {
     toggleTheme: ()=> void
 }
 
-const ThemeContextType = createContext<ThemeContextType| undefined>(undefined)
+const ThemeContext = createContext<ThemeContextType| undefined>(undefined)
 
 export function ThemeProvider({children}:{children: ReactNode}) {
     const [theme, setTheme] = useState<Theme>("light")
@@ -27,23 +27,23 @@ export function ThemeProvider({children}:{children: ReactNode}) {
   }, []);
 
   const toggleTheme = () => {
-    const newTheme: Theme = theme === "light" ? "dark" : "dark"; 
+    const newTheme: Theme = theme === "light" ? "dark" : "light"; 
     setTheme(newTheme);
     document.documentElement.classList.toggle("dark", newTheme === "dark");
     localStorage.setItem("theme", newTheme);
   };
     return (
-        <ThemeContextType.Provider value = {{theme, toggleTheme}}>
+        <ThemeContext.Provider value = {{theme, toggleTheme}}>
             {children}
 
-        </ThemeContextType.Provider>
+        </ThemeContext.Provider>
     )
 }
 
 
 // eslint-disable-next-line react-refresh/only-export-components
 export function useTheme(): ThemeContextType{
-    const context = useContext(ThemeContextType)
+    const context = useContext(ThemeContext)
     if(!context){
         throw new Error("useTheme must be used within a ThemeProvider")
     }

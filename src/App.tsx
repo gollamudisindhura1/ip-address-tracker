@@ -11,27 +11,33 @@ import ThemeToggle from './components/ThemeToggle'
 function App() {
 
   const {data, loading, error, fetchIPData} = useIPTracker()
+
+  const handleSearch = (query: string) => {
+    fetchIPData(query);
+  };
   
 
   return (
-    <>
-    <Header/>
-    <ThemeToggle/>
-    <SearchBar onSearch={fetchIPData} />
-    {loading && <Loader/>}
-    {error && <ErrorMessage message={error} />}
+    <div className="app">
+    
+      <div className="bg-pattern">
+        <div className="header-content">
+          <Header />
+          <ThemeToggle />
+        </div>
+        <SearchBar onSearch={handleSearch} />
+      </div>
+
+      {loading && <Loader />}
+      {error && <ErrorMessage message={error} />}
 
       {data && !loading && (
         <>
           <InfoCard data={data} />
-          <MapView
-            lat={data.location.lat}
-            lng={data.location.lng}
-          />
+          <MapView lat={data.location.lat} lng={data.location.lng} city={data.location.city} />
         </>
       )}
-      
-    </>
+    </div>
   )
 }
 
