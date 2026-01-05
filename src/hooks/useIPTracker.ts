@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import { useEffect, useState } from "react";
 import { type IPData }from "../types/ip";
 
@@ -12,27 +13,38 @@ export function useIPTracker() {
     const [loading, setLoading] = useState(true)
     const [error, setError] = useState("")
 
-    const fetchIPData = async (query?: string) =>{
-        try {
-            setLoading(true)
-            setError("")
+    const fetchIPData = async (query?: string) => {
+  try {
+    setLoading(true);
+    setError("");
 
-            const url = query
-            ? `${API_URL}?apiKey=${API_KEY}&ipAddress=${query}`
-        : `${API_URL}?apiKey=${API_KEY}`;
+    let url = `${API_URL}?apiKey=${API_KEY}`;
 
-        const response = await fetch (url)
-        if ( !response.ok) throw new Error()
-            const result = await response.json()
-        setData(result)
+    if (query && query.trim()) {
+      const trimmed = query.trim();
 
-        }catch {
-            setError("Please enter a valid IP address or domain.");
-    } finally {
-      setLoading(false);
-
-        }
+      // Simple check: if it has dots and looks like IP (numbers), use ipAddress
+      if (/^\d{1,3}(\.\d{1,3}){3}$/.test(trimmed) || trimmed.includes(':')) { // IPv4 or IPv6
+        url += `&ipAddress=${encodeURIComponent(trimmed)}`;
+      } else {
+        // Assume domain otherwise
+        url += `&domain=${encodeURIComponent(trimmed)}`;
+      }
     }
+
+    const response = await fetch(url);
+    if (!response.ok) {
+      throw new Error("Invalid input or API error");
+    }
+
+    const result: IPData = await response.json();
+    setData(result);
+  } catch (err) {
+    setError("Please enter a valid IP address or domain(e.g. facebook.com");
+  } finally {
+    setLoading(false);
+  }
+};
 
 
     useEffect(()=>{

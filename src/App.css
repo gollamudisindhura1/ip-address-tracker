@@ -1,5 +1,3 @@
-/* src/App.css - FINAL VERSION */
-
 .app {
   min-height: 100vh;
   position: relative;
@@ -280,6 +278,6 @@ input:checked + .slider:before {
 
   .map {
     height: 50vh; /* Fixed visible height */
-    min-height: 400px; /* Minimum so it's usable */
+    min-height: 400px; 
     width: 100%;
   }
