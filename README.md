@@ -1,73 +1,40 @@
-# React + TypeScript + Vite
+# Overview
+This is a modern, responsive IP Address Tracker application built with React, TypeScript, Leaflet, and the IPify Geolocation API. It allows users to search for any IP address or domain and instantly view key information (IP, location, timezone, ISP) along with an interactive map showing the exact location.
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+# Features
 
-Currently, two official plugins are available:
+- Instant IP Lookup on Load – Displays the user's own IP address and location immediately on page load.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- Search Any IP or Domain – Full support for IPv4, IPv6 addresses, and domain names (e.g., google.com, facebook.com).
 
-## React Compiler
+- Accurate Geolocation Data – Shows:
+   - IP Address
+   - Location (City, Region, Postcode, Country)
+   - Timezone (UTC offset)
+   - ISP
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- Interactive Map – Powered by Leaflet + OpenStreetMap, with a marker and popup showing the city name.
+- Pixel-Perfect Design – Matches the Frontend Mentor design exactly on both desktop and mobile.
+- Fully Responsive – Beautiful layout on all screen sizes, including stacked info card on mobile.
+- Dark / Light Theme Toggle – Smooth, modern green toggle switch with:
+    - System preference detection
+    - Preference saved in localStorage
+    - Full dark mode styling (background, cards, inputs, text)
 
-## Expanding the ESLint configuration
+- Error Handling – Clear, styled error messages for invalid inputs or API issues.
+- Loading State – Clean loading indicator during API requests.
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+# Reflection
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+This project was an excellent opportunity to practice several key frontend skills:
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+1. API Integration – Learned how to properly handle async requests, loading states, and error boundaries.
+2. Complex Layout Challenges – Mastering negative margins, z-index, and flexbox to achieve the overlapping info card on the map.
+3. Mobile Responsiveness – Deepened understanding of media queries, viewport units, and Leaflet resize issues on mobile.
+4. State Management – Used React Context effectively for global theme state without overkill libraries.
+5. TypeScript – Gained confidence in typing API responses, props, and context.
+6. Advanced Styling – Practiced creating a custom toggle switch, dark mode theming, and smooth transitions.
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+The biggest challenge was making the map fully visible and scrollable on mobile while maintaining the overlapping card design and solved through careful height management and Leaflet resize handling.
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
