@@ -1,5 +1,17 @@
-import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
+import { MapContainer, TileLayer, Marker, Popup, useMap } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
+import { useEffect } from "react";
+
+//Component to invalidate size on mount/resize
+function ResizeMap(){
+    const map = useMap()
+    useEffect(()=>{
+        setTimeout(()=>{
+            map.invalidateSize()
+        },100)
+    },[map])
+    return null
+}
 
 interface Props {
     lat: number
@@ -17,6 +29,7 @@ export default function MapView ({lat, lng, city}:Props){
              <Marker position={[lat, lng]}>
                 <Popup>{city}</Popup>
              </Marker>
+             <ResizeMap/>
 
         </MapContainer>
     )

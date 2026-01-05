@@ -263,3 +263,23 @@ input:checked + .slider:before {
     border-bottom-color: #334155;
   }
 }
+
+.app {
+    height: auto; /* Let content determine height */
+    min-height: 100vh;
+  }
+
+  .bg-pattern {
+    padding-bottom: 8rem; /* Reduced to make room */
+  }
+
+  .info-container {
+    margin-top: -6rem; /* Less negative margin so map has space */
+    margin-bottom: 2rem;
+  }
+
+  .map {
+    height: 50vh; /* Fixed visible height */
+    min-height: 400px; /* Minimum so it's usable */
+    width: 100%;
+  }
