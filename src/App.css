@@ -1,0 +1,353 @@
+/* src/App.css */
+
+.app {
+  min-height: 100vh;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Header Background with Pattern */
+.bg-pattern {
+  background: url('/images/pattern-bg-desktop.png') no-repeat center/cover;
+  padding: 2rem 1.5rem 9rem;
+  text-align: center;
+  color: white;
+  position: relative;
+}
+
+/* Header Content: Title + Toggle */
+.header-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto 2rem;
+  padding: 0 1.5rem;
+}
+
+.header-content h1 {
+  font-size: 2rem;
+  font-weight: 500;
+  letter-spacing: 1px;
+}
+
+/* Search Bar */
+.search-bar {
+  max-width: 550px;
+  margin: 0 auto;
+  display: flex;
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+  background: white;
+}
+
+.search-bar input {
+  flex: 1;
+  padding: 1.3rem 1.8rem;
+  border: none;
+  font-size: 1.1rem;
+  color: hsl(0, 0%, 17%);
+}
+
+.search-bar input::placeholder {
+  color: hsl(0, 0%, 59%);
+}
+
+.search-bar input:focus {
+  outline: none;
+}
+
+.search-bar button {
+  background: hsl(0, 0%, 0%) url('/images/icon-arrow.svg') no-repeat center;
+  background-size: 14px;
+  border: none;
+  padding: 0 1.8rem;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.search-bar button:hover {
+  background-color: hsl(0, 0%, 17%);
+}
+
+/* Info Card */
+.info-container {
+  background: white;
+  max-width: 1200px;
+  margin: -6rem auto 3rem;
+  padding: 2.5rem 2rem;
+  border-radius: 15px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 2rem;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  position: relative;
+  z-index: 10;
+}
+
+.info-item {
+  text-align: center;
+  flex: 1;
+  min-width: 200px;
+  padding: 0 1rem;
+  border-right: 1px solid hsl(0, 0%, 85%);
+}
+
+.info-item:last-child {
+  border-right: none;
+}
+
+.info-item h4 {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: hsl(0, 0%, 59%);
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-bottom: 0.8rem;
+}
+
+.info-item p {
+  font-size: 1.6rem;
+  font-weight: 500;
+  color: hsl(0, 0%, 17%);
+  word-break: break-all;
+}
+
+/* Map */
+.map {
+  flex: 1;
+  height: calc(100vh - 280px);
+  min-height: 500px;
+  z-index: 1;
+}
+
+/* Loader & Error */
+.loader,
+.error {
+  text-align: center;
+  padding: 2rem;
+  font-size: 1.4rem;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 20;
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.error {
+  color: red;
+}
+
+/* Modern Green Toggle Switch */
+.theme-toggle-switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+  cursor: pointer;
+}
+
+.theme-toggle-switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  border-radius: 34px;
+  transition: 0.4s;
+  box-shadow: inset 0 2px 4px rgba(0,0,0,0.2);
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  border-radius: 50%;
+  transition: 0.4s;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+input:checked + .slider {
+  background-color: #4caf50; /* Green */
+}
+
+input:checked + .slider:before {
+  transform: translateX(26px);
+}
+
+/* Optional icons in toggle */
+.icon {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 1.2rem;
+  transition: opacity 0.3s;
+  pointer-events: none;
+}
+
+.moon { left: 8px; opacity: 1; }
+.sun { right: 8px; opacity: 0; }
+
+input:checked + .slider .moon { opacity: 0; }
+input:checked + .slider .sun { opacity: 1; }
+
+.theme-toggle-switch:hover .slider {
+  box-shadow: 0 0 10px rgba(76, 175, 80, 0.4);
+}
+
+/* Dark Mode */
+.dark .bg-pattern {
+  background: linear-gradient(135deg, #0f172a, #1e1b4b);
+}
+
+.dark .info-container {
+  background: #16213e;
+  color: white;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6);
+}
+
+.dark .info-item h4 {
+  color: #94a3b8;
+}
+
+.dark .info-item p {
+  color: #f1f5f9;
+}
+
+.dark .info-item {
+  border-right-color: #334155;
+}
+
+.dark .search-bar {
+  background: #0f172a;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+.dark .search-bar input {
+  background: transparent;
+  color: white;
+}
+
+.dark .search-bar input::placeholder {
+  color: #94a3b8;
+}
+
+.dark .search-bar button {
+  background: #1e293b;
+}
+
+.dark .search-bar button:hover {
+  background: #334155;
+}
+
+.dark .loader,
+.dark .error {
+  background: #16213e;
+  color: white;
+}
+
+.dark .error {
+  color: #ff6b6b;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .info-container {
+    margin: -5rem auto 2rem;
+    padding: 2rem 1.5rem;
+  }
+  .info-item p {
+    font-size: 1.4rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .bg-pattern {
+    background: url('/images/pattern-bg-mobile.png') no-repeat center/cover;
+    padding-bottom: 12rem;
+  }
+
+  .header-content {
+    flex-direction: column;
+    gap: 1.5rem;
+    margin-bottom: 1rem;
+  }
+
+  .header-content h1 {
+    font-size: 1.7rem;
+  }
+
+  .search-bar {
+    max-width: 90%;
+  }
+
+  .search-bar input {
+    padding: 1.1rem 1.2rem;
+    font-size: 1rem;
+  }
+
+  .search-bar button {
+    padding: 0 1.4rem;
+  }
+
+  .info-container {
+    flex-direction: column;
+    text-align: center;
+    margin: -8rem auto 2rem;
+    padding: 2rem 1.5rem;
+    gap: 1.8rem;
+  }
+
+  .info-item {
+    border-right: none;
+    border-bottom: 1px solid hsl(0, 0%, 85%);
+    padding: 1rem 0;
+  }
+
+  .info-item:last-child {
+    border-bottom: none;
+  }
+
+  .info-item h4 {
+    font-size: 0.7rem;
+  }
+
+  .info-item p {
+    font-size: 1.3rem;
+  }
+
+  .map {
+    height: calc(100vh - 400px);
+  }
+
+  .dark .info-item {
+    border-bottom-color: #334155;
+  }
+}
+
+@media (max-width: 480px) {
+  .header-content h1 {
+    font-size: 1.5rem;
+  }
+  .info-item p {
+    font-size: 1.2rem;
+  }
+}

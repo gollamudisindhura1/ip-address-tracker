@@ -6,6 +6,7 @@ import Loader from './components/Loader'
 import ErrorMessage from './components/ErrorMessage'
 import { useIPTracker } from './hooks/useIPTracker'
 import './App.css'
+import ThemeToggle from './components/ThemeToggle'
 
 function App() {
 
@@ -15,6 +16,7 @@ function App() {
   return (
     <>
     <Header/>
+    <ThemeToggle/>
     <SearchBar onSearch={fetchIPData} />
     {loading && <Loader/>}
     {error && <ErrorMessage message={error} />}
